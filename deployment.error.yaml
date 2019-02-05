@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rollup-demo-api
+  labels:
+    app: rollup-demo-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rollup-demo-api
+  template:
+    metadata:
+      labels:
+        app: rollup-demo-api
+    spec:
+      containers:
+      - name: rollup-demo-api
+        image: rollup-demo-api:1.0.2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: rollup-demo-api
+spec:
+  selector:
+    app: rollup-demo-api
+  ports:
+  - port: 8080
+    targetPort: 8080
+  type: NodePort

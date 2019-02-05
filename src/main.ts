@@ -9,6 +9,7 @@ app.use(cors());
 
 app.get('/', (req, res) => {
   res.json({
+    service: "rollup-demo",
     version,
     timestamp: Date.now(),
   }).end();

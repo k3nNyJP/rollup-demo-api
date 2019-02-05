@@ -1,5 +1,4 @@
 import * as express from 'express';
-import { join } from 'path';
 import { version } from "./package.json";
 
 const app = express();
